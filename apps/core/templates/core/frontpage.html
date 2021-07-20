@@ -1,5 +1,5 @@
 {% extends 'core/base.html' %}
-
+{% load static %}
 {% block title %}Home | {% endblock %}
 
 {% block content %}
@@ -11,4 +11,53 @@
             </div>
         </div>
     </section>  
+
+    <div class="container">
+        <div class="columns">
+            <div class="column is-8 is-offset-2">
+                <div class="columns is-align-items mt-6">
+                    <div class="column is-4 image">
+                        <img src="{% static 'images/features-timeTracking.jpeg' %}">
+                    </div>
+    
+                    <div class="column is-8 text">
+                        <h2 class="subtitle">Simple time tracking</h2>
+    
+                        <p>Time tracking made simple. Time tracking made simple. Time tracking made simple. Time tracking made simple. Time tracking made simple.</p>
+                    </div>
+                </div>
+    
+                <div class="columns is-align-items mt-6">
+                    <div class="column is-8 text">
+                        <h2 class="subtitle">Simple time tracking</h2>
+    
+                        <p>Time tracking made simple. Time tracking made simple. Time tracking made simple. Time tracking made simple. Time tracking made simple.</p>
+                    </div>
+    
+                    <div class="column is-4 image">
+                        <img src="{% static 'images/features-timeTracking.jpeg' %}">
+                    </div>
+                </div>
+    
+                <div class="columns is-align-items mt-6">
+                    <div class="column is-4 image">
+                        <img src="{% static 'images/features-timeTracking.jpeg' %}">
+                    </div>
+    
+                    <div class="column is-8 text">
+                        <h2 class="subtitle">Simple time tracking</h2>
+    
+                        <p>Time tracking made simple. Time tracking made simple. Time tracking made simple. Time tracking made simple. Time tracking made simple.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="columns is-align-items-center mt-6">
+            <div class="column is-4 is-offset-4 has-text-centered">
+                <h2 class="subtitle">Let's get started</h2>
+    
+                <a href="#" class="button is-success is-large">Get a free account</a>
+            </div>
+        </div>
 {% endblock %} 
