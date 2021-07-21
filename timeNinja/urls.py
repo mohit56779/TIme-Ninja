@@ -32,5 +32,5 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='userprofiles/login.html') , name='login'),
     path('myaccount/', myaccount, name='myaccount'),
     path('login/', auth_views.LogoutView.as_view() , name='logout'),
-    path('myaccount/edit_profile', edit_profile, name='edit_profile'),
+    path('myaccount/edit_profile/', edit_profile, name='edit_profile'),
 ]
