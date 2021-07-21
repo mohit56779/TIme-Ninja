@@ -2,7 +2,7 @@
 from django.contrib import admin
 
 # import models
-from .models import Userprofile
+from .models import Project
 
 # register 
-admin.site.register(Userprofile)
+admin.site.register(Project)
