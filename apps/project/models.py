@@ -20,4 +20,34 @@ class Project(models.Model):
         return 0
 
     def num_tasks_todo(self):
+        return self.tasks.filter(status=Task.TODO).count()
+
+
+class Task(models.Model):
+    #
+    # Status choices
+
+    TODO = 'todo'
+    DONE = 'done'
+    ARCHIVED = 'archived'
+
+    CHOICES_STATUS = (
+        (TODO, 'Todo'),
+        (DONE, 'Done'),
+        (ARCHIVED, 'Archived')
+    )
+
+    project = models.ForeignKey(Project, related_name='tasks', on_delete=models.CASCADE)
+    title = models.CharField(max_length=255)
+    created_by = models.ForeignKey(User, related_name='tasks', on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=20, choices=CHOICES_STATUS, default=TODO)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return self.title
+
+    def registered_time(self):
         return 0

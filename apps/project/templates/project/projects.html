@@ -32,7 +32,7 @@
 
                     <hr>
 
-                    <a href="#" class="button is-success">Details</a>
+                    <a href="{% url 'project:project' project.id %} " class="button is-success">Details</a>
                 </div>
             </div>
         {% empty %}
@@ -52,7 +52,7 @@
 
             <div class="modal-card">
                 <div class="modal-card-head">
-                    <p class="modal-card-title">Add task</p>
+                    <p class="modal-card-title">Add Project</p>
                 </div>
 
                 <div class="modal-card-body">
