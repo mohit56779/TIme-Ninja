@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-$l8@2u7)7vlv=wpr00fn3_c!y*3f3qd)kds2$vx1w+3^53dp-z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['timeninja.herokuapp.com', '127.0.0.1']
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'myaccount'
