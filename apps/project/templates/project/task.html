@@ -95,8 +95,8 @@
                                     <td>{{ entry.minutes }}</td>
                                     <td>{{ entry.note }}</td>
                                     <td>
-                                        <a href="#">Edit</a>
-                                        <a href="#">Delete</a>
+                                        <a href="{% url 'project:edit_entry' project.id task.id entry.id %}">Edit</a>
+                                        <a href="{% url 'project:delete_entry' project.id task.id entry.id %}">Delete</a>
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -104,8 +104,11 @@
 
                         <tfoot>
                             <tr>
-                                <th colspan="2">Total</th>
-                                <th colspan="2">{{ task.registered_time }}</th>
+                                <th>Total</th>
+                                <th >{{ task.registered_time }}</th>
+                                <th></th>
+                                <th></th>
+                          
                             </tr>
                         </tfoot>
                     </table>
