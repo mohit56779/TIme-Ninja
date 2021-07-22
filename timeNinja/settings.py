@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     # registering custom apps
     'apps.core',
     'apps.userprofile',
-    'apps.project'
+    'apps.project',
+    'apps.dashboard'
 ]
 
 MIDDLEWARE = [

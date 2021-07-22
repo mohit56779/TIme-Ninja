@@ -75,7 +75,7 @@ def task(request, project_id, task_id):
         minutes_total = (hours * 60) + minutes
         note = request.POST.get('note', "")
 
-        entry = Entry.objects.create(project=project, task=task, minutes=minutes_total, created_by=request.user, created_at=date,note=note)
+        entry = Entry.objects.create(project=project, task=task, minutes=minutes_total, created_by=request.user, created_at=date,note=note, is_tracked=True)
 
     return render(request, 'project/task.html', {'today': datetime.today(), 'project': project, 'task': task})
 
