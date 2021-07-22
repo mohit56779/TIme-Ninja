@@ -46,6 +46,8 @@ class Task(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=20, choices=CHOICES_STATUS, default=TODO)
 
+
+
     class Meta:
         ordering = ['-created_at']
 
@@ -62,7 +64,8 @@ class Entry(models.Model):
     minutes = models.IntegerField(default=0)
     is_tracked = models.BooleanField(default=False)
     created_by = models.ForeignKey(User, related_name='entries', on_delete=models.CASCADE)
-    created_at = models.DateTimeField(blank=True, null=True,default=datetime.today())
+    created_at = models.DateTimeField()
+    note = models.CharField(max_length=255, default="")
 
     class Meta:
         ordering = ['-created_at']

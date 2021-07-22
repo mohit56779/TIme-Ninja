@@ -23,7 +23,7 @@
                 <form method="post" action=".">
                     {% csrf_token %}
 
-                    <div class="field is-grouped">
+                    <div class="field is-grouped column is-5">
                         <div class="control">
                             <div class="select">
                                 <select name="hours">
@@ -47,11 +47,19 @@
                         </div>
                     </div>
 
-                    <div class="field">
+                    <div class="field column is-5">
                         <label>Date</label>
 
                         <div class="control">
                             <input type="date" id="id_date" name="date" class="input" value="{{ today|date:'Y-m-d' }}" placeholder="yyyy-mm-dd">
+                        </div>
+                    </div>
+
+                    <div class="field column is-5">
+                        <label>Note</label>
+
+                        <div class="control">
+                            <input type="text" name="note" id="id_note" class="input">
                         </div>
                     </div>
 
@@ -63,6 +71,48 @@
                 </form>
             </div>
         </div>
+        <div class="columns">
+            <div class="column is-12">
+                <hr>
 
+                <h2 class="subtitle">Logged entries</h2>
+
+                {% if task.entries.all %}
+                    <table class="table is-fullwidth" style="text-align: left;">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Note</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for entry in task.entries.all %}
+                                <tr>
+                                    <td>{{ entry.created_at }}</td>
+                                    <td>{{ entry.minutes }}</td>
+                                    <td>{{ entry.note }}</td>
+                                    <td>
+                                        <a href="#">Edit</a>
+                                        <a href="#">Delete</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+
+                        <tfoot>
+                            <tr>
+                                <th colspan="2">Total</th>
+                                <th colspan="2">{{ task.registered_time }}</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                {% else %}
+                    <p>No entries yet...</p>
+                {% endif %}
+            </div>
+        </div>
     </div>
 {% endblock %} 
