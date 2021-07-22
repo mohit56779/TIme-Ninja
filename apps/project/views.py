@@ -1,10 +1,12 @@
+from datetime import datetime
+
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 
 # Import models
 from django.contrib.auth.models import User
-from .models import Project, Task
+from .models import Project, Task, Entry
 
 # View
 
@@ -66,7 +68,15 @@ def task(request, project_id, task_id):
     project = get_object_or_404(Project, pk=project_id)
     task = get_object_or_404(Task, pk=task_id)
 
-    return render(request, 'project/task.html', {'project': project, 'task': task})
+    if request.method == 'POST':
+        hours = int(request.POST.get('hours', 0))
+        minutes = int(request.POST.get('minutes', 0))
+        date = '%s %s' % (request.POST.get('date'), datetime.now().time())
+        minutes_total = (hours * 60) + minutes
+
+        entry = Entry.objects.create(project=project, task=task, minutes=minutes_total, created_by=request.user, created_at=date)
+
+    return render(request, 'project/task.html', {'today': datetime.today(), 'project': project, 'task': task})
 
 @login_required
 def edit_task(request, project_id, task_id):

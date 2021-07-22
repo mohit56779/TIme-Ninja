@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -58,7 +60,7 @@ class Entry(models.Model):
     minutes = models.IntegerField(default=0)
     is_tracked = models.BooleanField(default=False)
     created_by = models.ForeignKey(User, related_name='entries', on_delete=models.CASCADE)
-    created_at = models.DateTimeField()
+    created_at = models.DateTimeField(blank=True, null=True,default=datetime.today())
 
     class Meta:
         ordering = ['-created_at']
